@@ -2,7 +2,7 @@
 
 .header {
 	display: flex;
-	margin: 36px 0 26px;
+	margin: 3.6rem 0 2.6rem;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -13,20 +13,21 @@
 
 .title {
 	color: vars.$color-text;
-	font-size: 36px;
-	margin-right: 30px;
+	font-size: 3.6rem;
+	font-weight: bold;
+	margin-right: 3rem;
 }
 
 .refresh {
 	position: relative;
-	width: 40px;
-	height: 40px;
+	width: 4rem;
+	height: 4rem;
 
 	box-shadow: vars.$shadow-1, vars.$shadow-2;
 	border-radius: 50%;
 	cursor: pointer;
 
-	&__icon {
+	&Icon{
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -37,14 +38,14 @@
 
 .search {
 	width: 100%;
-	padding: 12px 46px 12px 10px ;
+	padding: 1.2rem 4.6rem 1.2rem 1rem ;
 
-	font-size: 14px;
-	border-radius: 3px;
+	font-size: 1.4rem;
+	border-radius: .3rem;
 	box-shadow: vars.$shadow-1, vars.$shadow-2;
 
 	&:focus {
-		outline: 2px solid vars.$color-blue;
+		outline: .2rem solid vars.$color-blue;
 	}
 
 	&::-webkit-search-cancel-button {
@@ -54,12 +55,12 @@
 
 	&__wrapper {
 		position: relative;
-		width: 321px;
-		height: 40px;
+		width: 32.1rem;
+		height: 4rem;
 	}
 
-	&__btn {
-		padding: 10px 13px;
+	&Btn {
+		padding: 1rem 1.3rem;
 		background: transparent;
 		cursor: pointer;
 
@@ -70,13 +71,13 @@
 		transform: translateY(-50%);
 
 		&:hover {
-			.search__icon path {
-				fill: vars.$color-blue;
+			.searchIcon {
+				color: vars.$color-blue;
 			}
 		}
 	}
 
-	&__icon path {
-		fill: vars.$color-gray;
+	&Icon {
+		color: vars.$color-gray;
 	}
 }
