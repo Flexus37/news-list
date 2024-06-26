@@ -1,13 +1,13 @@
 @use '@/styles/vars' as vars;
 
 .container {
-	max-width: 1060px;
+	max-width: 106rem;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2rem;
 }
 
 .line {
   border: none;
-  border-top: 1px solid vars.$color-gray;
-  margin-bottom: 26px;
+  border-top: .1rem solid vars.$color-gray;
+  margin-bottom: 2.6rem;
 }
