@@ -1,0 +1,82 @@
+@use '@/styles/vars' as vars;
+
+.header {
+	display: flex;
+	margin: 36px 0 26px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item {
+	display: flex;
+}
+
+.title {
+	color: vars.$color-text;
+	font-size: 36px;
+	margin-right: 30px;
+}
+
+.refresh {
+	position: relative;
+	width: 40px;
+	height: 40px;
+
+	box-shadow: vars.$shadow-1, vars.$shadow-2;
+	border-radius: 50%;
+	cursor: pointer;
+
+	&__icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 10;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.search {
+	width: 100%;
+	padding: 12px 46px 12px 10px ;
+
+	font-size: 14px;
+	border-radius: 3px;
+	box-shadow: vars.$shadow-1, vars.$shadow-2;
+
+	&:focus {
+		outline: 2px solid vars.$color-blue;
+	}
+
+	&::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+	&__wrapper {
+		position: relative;
+		width: 321px;
+		height: 40px;
+	}
+
+	&__btn {
+		padding: 10px 13px;
+		background: transparent;
+		cursor: pointer;
+
+		position: absolute;
+		top: 50%;
+		right: 0;
+		z-index: 10;
+		transform: translateY(-50%);
+
+		&:hover {
+			.search__icon path {
+				fill: vars.$color-blue;
+			}
+		}
+	}
+
+	&__icon path {
+		fill: vars.$color-gray;
+	}
+}
