@@ -1,0 +1,44 @@
+@use '@/styles/vars' as vars;
+
+.toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter {
+  display: flex;
+  gap: 1.6rem;
+  list-style-type: none;
+
+  li {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: vars.$color-blue;
+    cursor: pointer;
+
+    &.active {
+      color: vars.$color-text;
+    }
+  }
+}
+
+.viewMode {
+  display: flex;
+  gap: 1rem;
+
+  button {
+    cursor: pointer;
+
+    &.active {
+      .icon {
+        color: vars.$color-blue;
+      }
+    }
+  }
+}
+
+.icon {
+  color: vars.$color-gray;
+}
