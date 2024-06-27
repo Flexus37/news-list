@@ -1,0 +1,22 @@
+.gridMode {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 2rem;
+	padding-bottom: 5rem;
+}
+
+.listMode {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: 2rem;
+	padding-bottom: 5rem;
+}
+
+@media (max-width: 825px) {
+	.gridMode {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(1fr, 4);
+	}
+}

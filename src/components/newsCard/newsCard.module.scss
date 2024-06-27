@@ -1,0 +1,202 @@
+@use '@/styles/vars' as vars;
+
+.card {
+	position: relative;
+	width: 100%;
+	padding: 3rem 3rem 0;
+	background-color: vars.$color-white;
+	box-shadow: vars.$shadow-1, vars.$shadow-2;
+	border-radius: .3rem;
+
+	time {
+		font-size: 1.4rem;
+		font-weight: normal;
+		line-height: 2rem;
+		color: vars.$color-gray;
+	}
+}
+
+.cardGridMode {
+	h2 {
+		margin-bottom: 2.5rem;
+
+		a {
+			font-size: 1.8rem;
+			font-weight: bold;
+			text-decoration: none;
+			color: vars.$color-blue;
+			line-height: 2.2rem;
+		}
+	}
+
+	p {
+		margin-bottom: 2rem;
+	}
+
+	.newsLink {
+		display: block;
+		margin-bottom: 5.5rem;
+	}
+
+	.metaInfo {
+		display: block;
+		width: 100%;
+		border-radius: .3rem;
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		&Inner {
+			padding: 0rem 3rem 1.6rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+}
+
+.cardListMode {
+	margin-bottom: 5.9rem;
+
+	h2 {
+		margin-bottom: 2rem;
+
+		a {
+			font-size: 1.8rem;
+			font-weight: bold;
+			text-decoration: none;
+			color: vars.$color-blue;
+			line-height: 2.2rem;
+		}
+	}
+
+	p {
+		margin-bottom: 2rem;
+	}
+
+	&Inner {
+		display: grid;
+		grid-template-columns: 20rem 1fr;
+		gap: 3rem;
+	}
+
+	.newsLink {
+		display: none;
+	}
+
+	.metaInfo {
+		display: block;
+		width: 100%;
+		border-radius: .3rem;
+
+		background-color: vars.$color-white-gray;
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		&Inner {
+			padding: .4rem 2.2rem .4rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+}
+
+.resourceLink {
+	color: vars.$color-gray;
+}
+
+.image {
+	object-fit: cover;
+	width: 20rem;
+	height: 10rem;
+}
+
+@media (max-width: 825px) {
+	.card {
+		padding: 2rem 2.2rem 0;
+	}
+
+	.cardGridMode {
+		.newsLink {
+			display: block;
+			margin-bottom: 4.3rem;
+		}
+	}
+
+	.cardListMode {
+		margin-bottom: 0;
+
+		&Inner {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+	}
+
+	.image {
+		width: 100%;
+		height: 16.6rem;;
+	}
+
+	.cardGridMode, .cardListMode {
+		.newsLink {
+			display: block;
+			margin-bottom: 4.3rem;
+		}
+
+		.metaInfo {
+			background-color: vars.$color-white-gray;
+
+			position: absolute;
+			left: 0;
+			bottom: 0;
+
+			&Inner {
+				padding: .4rem 2.2rem .4rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+		}
+	}
+	}
+
+
+
+@media (max-width: 425px) {
+
+	.card {
+		padding: 2rem 2.2rem 0;
+	}
+
+	// .cardGridMode, .cardListMode {
+	// 	.newsLink {
+	// 		display: block;
+	// 		margin-bottom: 4.3rem;
+	// 	}
+	// }
+
+	.metaInfo {
+		background-color: vars.$color-white-gray;
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		&Inner {
+			padding: .4rem 2.2rem .4rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	// .cardListMode {
+
+	// }
+
+}
