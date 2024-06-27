@@ -33,6 +33,28 @@ a {
   text-decoration: none;
 }
 
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: vars.$color-blue;
+  line-height: 2.2rem;
+}
+
+p {
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: vars.$color-text;
+  line-height: 2rem;
+}
+
+a {
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 2rem;
+  color: vars.$color-blue;
+  text-decoration: underline;
+}
+
 button, input {
   border: none;
   background-color: vars.$color-bg;
