@@ -10,6 +10,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ['www.mos.ru', 'icdn.lenta.ru']
+  }
 };
 
 export default nextConfig;
