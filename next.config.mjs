@@ -11,7 +11,27 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['www.mos.ru', 'icdn.lenta.ru']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.mos.ru',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'icdn.lenta.ru',
+        port: '',
+      },
+    ]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/1',
+        permanent: true
+      }
+    ]
   }
 };
 
