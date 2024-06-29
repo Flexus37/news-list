@@ -1,5 +1,7 @@
+import { Header } from '@/components/header/Header'
 import "@/styles/globals.scss"
 import type { Metadata } from "next"
+import styles from './layout.module.scss'
 
 export const metadata: Metadata = {
   title: "Список новостей",
@@ -13,7 +15,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en,ru">
-      <body className=''>{children}</body>
+      <body className=''>
+        <main>
+          <div className={styles.container}>
+            <Header />
+            <hr className={styles.line} />
+            {children}
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
