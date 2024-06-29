@@ -11,6 +11,10 @@ interface INewsCard {
 }
 
 export default function NewsCard({newsItem, viewMode}: INewsCard) {
+	if (!newsItem) {
+    return null;
+  }
+
 	const { title, link, source, pubDate, description, enclosure } = newsItem;
 
 	const stringDate = pubDate.toLocaleDateString();

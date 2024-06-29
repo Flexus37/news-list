@@ -115,7 +115,7 @@
 	height: 10rem;
 }
 
-@media (max-width: 825px) {
+@media (max-width: vars.$size-md) {
 	.card {
 		padding: 2rem 2.2rem 0;
 	}
@@ -167,18 +167,11 @@
 
 
 
-@media (max-width: 425px) {
+@media (max-width: vars.$size-sm) {
 
 	.card {
 		padding: 2rem 2.2rem 0;
 	}
-
-	// .cardGridMode, .cardListMode {
-	// 	.newsLink {
-	// 		display: block;
-	// 		margin-bottom: 4.3rem;
-	// 	}
-	// }
 
 	.metaInfo {
 		background-color: vars.$color-white-gray;
@@ -194,9 +187,5 @@
 			align-items: center;
 		}
 	}
-
-	// .cardListMode {
-
-	// }
 
 }
