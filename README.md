@@ -1,38 +1,50 @@
-# Тестовое задание "Список новостей"
+📰 Тестовое задание "Список новостей"
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Добро пожаловать в проект "Список новостей", созданный с использованием Next.js.
+🚀 Начало работы
 
-## Getting Started
+Для запуска сервера разработки выполните команду:
 
-First, run the development server:
+bash
 
-```bash
 npm run dev
-# or
+# или
 yarn dev
-# or
+# или
 pnpm dev
-# or
+# или
 bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте http://localhost:3000 в вашем браузере, чтобы увидеть результат.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Вы можете начать редактирование страницы, изменяя файл app/page.tsx. Страница автоматически обновляется при редактировании файла.
+📦 Используемые технологии
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    Next.js - React framework для создания производительных веб-приложений.
+    Redux Toolkit - удобный и стандартный способ использования Redux.
+    Sass - препроцессор CSS, используемый для написания более чистого и структурированного CSS-кода.
+    TypeScript - строго типизированный язык, который помогает избежать ошибок в коде.
 
-## Learn More
+📚 Узнать больше
 
-To learn more about Next.js, take a look at the following resources:
+Для получения дополнительной информации о Next.js ознакомьтесь с следующими ресурсами:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Документация Next.js - узнать о функциях и API Next.js.
+    Интерактивное руководство Next.js - обучающее руководство по Next.js.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Вы также можете посетить репозиторий Next.js на GitHub, ваши отзывы и вклады приветствуются!
+📤 Деплой на Vercel
 
-## Deploy on Vercel
+Самый простой способ развернуть ваше Next.js приложение - использовать платформу Vercel от создателей Next.js.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Посмотрите нашу документацию по деплою Next.js для получения более подробной информации.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Наслаждайтесь созданием вашего проекта "Список новостей"! Если у вас возникнут вопросы, не стесняйтесь обращаться. 🎉
+🛠️ Команды для разработки
+
+    npm run dev - запуск сервера разработки.
+    npm run build - сборка проекта.
+    npm run start - запуск собранного проекта.
+    npm run lint - запуск линтера для проверки кода.
+
+Сделано с ❤️ и Next.js
