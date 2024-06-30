@@ -1,10 +1,22 @@
+'use server'
+
 import { RssData, RssItem } from '@/types/rss'
 import xml2js from 'xml2js'
 import getSourceFromUrl from './getSourceFromUrl'
 
+/**
+ * Парсер для получения данных из RSS ленты
+ * @param {string} url - URL RSS ленты
+ * @returns {Promise<RssItem[]>} - Promise массива с данными
+ */
 const parseRss = async (url: string): Promise<RssItem[]> => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      next: {
+        revalidate: 3600, // 1 час
+        tags: ['news']
+      }
+    });
 
     if (!response.ok) {
       return [];
@@ -17,6 +29,7 @@ const parseRss = async (url: string): Promise<RssItem[]> => {
     });
 
     const items = data.rss.channel[0].item;
+
     return items.map((item: any) => ({
       title: item.title[0],
       link: item.link[0],
@@ -34,3 +47,5 @@ const parseRss = async (url: string): Promise<RssItem[]> => {
 };
 
 export default parseRss;
+
+
