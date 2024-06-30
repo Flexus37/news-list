@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en,ru">
-      <body className=''>
+      <body>
         <main>
           <div className={styles.container}>
             <Header />

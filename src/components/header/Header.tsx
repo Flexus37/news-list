@@ -58,8 +58,7 @@ export function Header() {
           <input
             className={styles.search}
             type='search'
-						value={searchInputValue}
-						defaultValue={searchInputValue}
+						value={searchInputValue ?? ''}
             onChange={(e) => handleSearchChange(e)}
 
           />
