@@ -1,60 +1,93 @@
 'use client'
 
+import Pagination from '@/components/pagination/Pagination'
 import { RootState } from '@/store'
-import { useSelector } from 'react-redux'
-
 import { setViewMode, ViewMode } from '@/store/appSlice'
 import { RssItem } from '@/types/rss'
+import { Filter } from '@/types/types'
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useMemo } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import NewsCard from '../newsCard/NewsCard'
 import styles from './newsList.module.scss'
 
 interface INewsList {
-	newsData: RssItem[]
+  newsData: RssItem[];
+  pageSlug: string;
 }
 
-export default function NewsList({newsData}: INewsList) {
-	const viewMode = useSelector((state: RootState) => state.app.viewMode);
-	const filter = useSelector((state: RootState) => state.app.filter);
+// Количество новостей на страницу
+const GRID_PAGE_SIZE = 4; // в режиме grid
+const LIST_PAGE_SIZE = 3; // в режиме list
 
-	const dispatch = useDispatch();
+export default function NewsList({ newsData, pageSlug }: INewsList) {
+  const viewMode = useSelector((state: RootState) => state.app.viewMode);
+  const searchParams = useSearchParams();
+  const filter = searchParams.get('filter') ?? 'все';
+  const searchTerm = searchParams.get('search') ?? '';
+  const currentPage = Number(pageSlug) ?? 1;
 
-	useEffect(() => {
-		const savedViewMode = localStorage.getItem('viewMode');
-		if (savedViewMode) {
-			dispatch(setViewMode(savedViewMode as ViewMode))
-		}
-	}, [])
+  const dispatch = useDispatch();
 
-	const sortedNewsData = useMemo(() => {
-		return newsData.slice().sort((a, b) =>
-			b.pubDate.getTime() - a.pubDate.getTime()
-		);
-	}, [newsData])
+  // Получение режима отображения из локального хранилища
+  useEffect(() => {
+    const savedViewMode = localStorage.getItem('viewMode');
+    if (savedViewMode) {
+      dispatch(setViewMode(savedViewMode as ViewMode))
+    }
+  }, [dispatch])
 
-	const renderNews = () => {
+  // Сортировка новостей по дате публикации
+  const sortedNewsData = useMemo(() => {
+    return newsData.slice().sort((a, b) =>
+      new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+    );
+  }, [newsData])
 
-		const filteredNews = filter === 'Все'
-		? sortedNewsData
-		: sortedNewsData.filter(item => {
-			if (filter.toLowerCase() === item.source) {
-				return item
-			}
-		})
+  // Фильтрация новостей по домену RSS лент и поисковому фильтру
+  const filteredNews = useMemo(() => {
+    let filtered = sortedNewsData;
 
-		const news = filteredNews.map((item, index) => {
-			return <NewsCard key={index} newsItem={item} viewMode={viewMode} />;
-		})
+    if (filter !== 'все') {
+      filtered = filtered.filter(item => item.source === filter);
+    }
 
-		return (
-			<div className={viewMode === 'grid' ? styles.gridMode : styles.listMode}>
-				{news}
-			</div>
-		)
+    if (searchTerm) {
+      filtered = filtered.filter(item =>
+        item.title.toLowerCase().includes(searchTerm) ||
+        item.description?.toLowerCase().includes(searchTerm)
+      );
+    }
 
-	}
+    return filtered;
+  }, [sortedNewsData, searchParams])
 
-	return renderNews();
+  // Общее количество новостей
+  const totalPages = Math.ceil(filteredNews.length / (viewMode === 'grid' ? GRID_PAGE_SIZE : LIST_PAGE_SIZE));
+
+  const renderNews = () => {
+    // Количество новостей на странице в зависимости от режима отображения
+    const currentPageSize = viewMode === 'grid' ? GRID_PAGE_SIZE : LIST_PAGE_SIZE;
+    const startIndex = (currentPage - 1) * currentPageSize;
+    const endIndex = startIndex + currentPageSize;
+    const newsToShow = filteredNews.slice(startIndex, endIndex);
+
+    return (
+      <>
+        <div className={viewMode === 'grid' ? styles.gridMode : styles.listMode}>
+          {newsToShow.map((item, index) => (
+            <NewsCard key={index} newsItem={item} viewMode={viewMode} />
+          ))}
+        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          filter={filter as Filter}
+          searchTerm={searchTerm}
+        />
+      </>
+    );
+  }
+
+  return renderNews();
 }
-

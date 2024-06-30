@@ -14,7 +14,7 @@
 	padding-bottom: 5rem;
 }
 
-@media (max-width: 825px) {
+@media (max-width: vars.$size-md) {
 	.gridMode {
 		grid-template-columns: 1fr;
 		grid-template-rows: repeat(1fr, 4);
