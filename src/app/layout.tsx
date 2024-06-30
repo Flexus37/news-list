@@ -1,9 +1,9 @@
 import { Header } from '@/components/header/Header'
+import { Spinner } from '@/components/spinner/Spinner'
 import "@/styles/globals.scss"
 import type { Metadata } from "next"
 import { Suspense } from 'react'
 import styles from './layout.module.scss'
-import NotFound from './not-found'
 
 export const metadata: Metadata = {
   title: "Список новостей",
@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
         <main>
           <div className={styles.container}>
-            <Suspense fallback={<NotFound />}>
+            <Suspense fallback={<Spinner />}>
               <Header />
               <hr className={styles.line} />
               {children}
