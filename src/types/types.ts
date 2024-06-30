@@ -1,0 +1,1 @@
+export type Filter = 'все' | 'lenta.ru' | 'mos.ru'
