@@ -1,0 +1,38 @@
+@use '@/styles/vars' as vars;
+
+.error {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	margin: 5rem 0;
+
+	background-color: vars.$color-bg;
+
+	h2 {
+		font-size: 6rem;
+		font-weight: bold;
+		line-height: 1;
+		margin-bottom: 4rem;
+	}
+
+	button {
+		font-size: 1.8rem;
+		padding: 1rem 1.6rem;
+
+		color: vars.$color-blue;
+		cursor: pointer;
+		background-color: vars.$color-white;
+		border: none;
+		border-radius: .3rem;
+		box-shadow: vars.$shadow-1, vars.$shadow-2;
+
+		transition: color .2s ease-in-out, background-color .2s ease-in-out;
+
+		&:hover {
+			color: vars.$color-white;
+			background-color: vars.$color-blue;
+		}
+	}
+}
