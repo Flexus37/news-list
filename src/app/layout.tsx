@@ -1,7 +1,9 @@
 import { Header } from '@/components/header/Header'
 import "@/styles/globals.scss"
 import type { Metadata } from "next"
+import { Suspense } from 'react'
 import styles from './layout.module.scss'
+import NotFound from './not-found'
 
 export const metadata: Metadata = {
   title: "Список новостей",
@@ -18,9 +20,11 @@ export default function RootLayout({
       <body>
         <main>
           <div className={styles.container}>
-            <Header />
-            <hr className={styles.line} />
-            {children}
+            <Suspense fallback={<NotFound />}>
+              <Header />
+              <hr className={styles.line} />
+              {children}
+            </Suspense>
           </div>
         </main>
       </body>
