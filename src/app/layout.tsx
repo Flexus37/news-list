@@ -18,11 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en,ru">
       <body>
+        <div className={styles.container}>
+          <Suspense fallback={<Loading />}>
+            <Header />
+          </Suspense>
+        </div>
         <main>
           <div className={styles.container}>
-            <Suspense fallback={<Loading />}>
-              <Header />
               <hr className={styles.line} />
+            <Suspense fallback={<Loading />}>
               {children}
             </Suspense>
           </div>
