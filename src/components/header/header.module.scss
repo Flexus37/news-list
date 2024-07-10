@@ -9,6 +9,7 @@
 
 .item {
   display: flex;
+  align-items: center;
 }
 
 .title {
@@ -81,7 +82,7 @@
   }
 }
 
-@media (max-width: vars.$size-sm) {
+@media (max-width: vars.$size-2sm) {
   .header {
     flex-direction: column;
     gap: 2.3rem;
