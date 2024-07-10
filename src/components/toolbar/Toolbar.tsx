@@ -1,7 +1,7 @@
 'use client'
 
 import { RootState } from '@/store'
-import { setViewMode } from '@/store/appSlice'
+import { setViewMode, ViewMode } from '@/store/appSlice'
 import { Filter } from '@/types/types'
 import { createQueryString } from '@/utils/queryString'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -38,6 +38,12 @@ export function Toolbar() {
 		router.replace(`${pathname}?${newQueryString}`);
 	}
 
+	// Изменение режима отображения и переадресация на первую страницу
+	const handleChangeViewMode = (viewMode: ViewMode) => {
+		dispatch(setViewMode(viewMode));
+		router.replace(`/1?filter=${filter}`);
+	}
+
 	return (
 		<div className={styles.toolbar}>
 			<ul className={styles.filter}>
@@ -62,13 +68,13 @@ export function Toolbar() {
 			</ul>
 			<div className={styles.viewMode}>
 				<button
-					onClick={() => dispatch(setViewMode('list'))}
+					onClick={() => handleChangeViewMode('list')}
 					className={viewMode === 'list' ? styles.active : ''}
 				>
 					<ListMode className={styles.icon} />
 				</button>
 				<button
-					onClick={() => dispatch(setViewMode('grid'))}
+					onClick={() => handleChangeViewMode('grid')}
 					className={viewMode === 'grid' ? styles.active : ''}
 				>
 					<GridMode className={styles.icon} />

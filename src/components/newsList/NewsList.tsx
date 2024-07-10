@@ -62,6 +62,16 @@ export default function NewsList({ newsData, pageSlug }: INewsList) {
     return filtered;
   }, [sortedNewsData, searchParams])
 
+  // Отображение сообщения если ничего не найдено
+  if (filteredNews.length === 0) {
+    return (
+      <>
+        <h2 style={{fontSize: '3rem', marginBottom: '2rem', lineHeight: '1'}}> К сожалению ничего не найдено</h2>
+        <p>Попробуйте изменить формулировку поиска или фильтры</p>
+      </>
+    )
+  }
+
   // Общее количество новостей
   const totalPages = Math.ceil(filteredNews.length / (viewMode === 'grid' ? GRID_PAGE_SIZE : LIST_PAGE_SIZE));
 
